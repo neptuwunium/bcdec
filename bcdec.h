@@ -290,10 +290,10 @@ static void bcdec__bc4_block(const void* compressedBlock, void* decompressedBloc
 
     indices = block >> 16;
     if (isSigned) {
-        sblock = (char*)decompressedBlock;
+        sblock = (signed char*)decompressedBlock;
         for (i = 0; i < 4; ++i) {
             for (j = 0; j < 4; ++j) {
-                sblock[j * pixelSize] = (char)alpha[indices & 0x07];
+                sblock[j * pixelSize] = (signed char)alpha[indices & 0x07];
                 indices >>= 3;
             }
             sblock += destinationPitch;
